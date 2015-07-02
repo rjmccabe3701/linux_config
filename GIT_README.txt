@@ -12,7 +12,7 @@ To synchronize changes to another computer do:
 
 cd ~
 git init
-git remote add origin  ssh://git@ralm.rockwellcollins.com:8098/~rjmccabe/linux_config.git
+git remote add origin https://github.com/rjmccabe3701/linux_config.git
 git fetch --all
 git reset --hard origin/master
 
