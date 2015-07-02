@@ -1,0 +1,126 @@
+"Need to do this to make spf13 compatible with TMUX/SSH
+"set listchars=tab:>.,trail:.,extends:#,nbsp:.
+
+"If doing TMUX, it also needs to be instantiated with "tmux -2"
+"
+
+"TODO: set this spf13_keep_trailing_whitespace somewhere
+
+set nobackup
+set noswapfile
+
+
+"let g:NERDTreeDirArrows=0
+
+
+"Dont create ~ files
+set nobackup
+"
+""Dont create swap files
+set noswapfile"
+
+autocmd FileType make setlocal noexpandtab
+autocmd FileType cpp setlocal expandtab shiftwidth=3 softtabstop=3
+autocmd FileType c setlocal noexpandtab
+
+"Control-C copies visual selection
+vmap <C-C> "+y
+"Control-V pastes in control and insert mode
+map <C-V>               "+gP
+imap <C-V>  <ESC>"+gpa
+
+"from http://vim.wikia.com/wiki/Show_current_function_name_in_C_programs
+fun! ShowFuncName()
+  let lnum = line(".")
+  let col = col(".")
+  echohl ModeMsg
+  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
+  echohl None
+  call search("\\%" . lnum . "l" . "\\%" . col . "c")
+endfun
+map W :call ShowFuncName() <CR>
+
+" Allow Tab toggling between linux and Rockwell Standards
+function! TabToggle()
+  if &expandtab
+    set shiftwidth=4
+    set softtabstop=0
+    set noexpandtab
+  else
+    set shiftwidth=3
+    set softtabstop=3
+    set expandtab
+  endif
+endfunction
+nmap <F9> mz:execute TabToggle()<CR>'z
+
+"Disable the annoying tab colors
+let g:indent_guides_enable_on_vim_startup = 0
+
+source ~/scripts/cscope_maps.vim
+
+"Regenerate cscope database
+nmap <F11> :!find $(pwd) -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' > cscope.files<CR>
+  \:!cscope -b -i cscope.files -f cscope.out<CR>
+  \:cs reset<CR>
+
+
+"Disables auto completions ( you can still use TAB to autocomplete )
+"let g:neocomplcache_disable_auto_complete = 1
+":call NeoCompleteLock()
+"NOTE: to select an item hit <TAB> again
+let g:neocomplete#disable_auto_complete = 1
+
+"Escape no longer undoes the selection we just made ...
+inoremap <expr> <Esc>  pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
+
+"Now Shift-Tab inserts a tab
+inoremap <S-Tab> <S-Tab>
+
+"let g:airline_extensions = ['branch', 'tabline']
+"The Status bar is too busy, this fixes that
+let g:airline_extensions = []
+
+
+"Good colors: kolor, contrasty, darth, inkpot, midnight, darkblack,
+"skittles_berry
+color inkpot
+
+"For some reason the select last visual selection key got overriden
+unmap gv
+
+
+"Block comment code in C/C++
+autocmd FileType cpp,c let b:surround_45 = "#if 0\n\r\n#endif\n"
+
+"The "H" and "L" keys (to go to the top and bottom) got remapped to change tabs --> put it back
+unmap H
+unmap L
+
+let NERDSpaceDelims = 1
+
+set diffopt=filler,vertical
+
+"Do not highlight the current line (its annoying)
+set nocursorline
+
+"MUCH better mouse control of the terminal
+"  from http://usevim.com/2012/05/16/mouse/
+"  and
+"  http://stackoverflow.com/questions/7000960/in-vim-why-doesnt-my-mouse-work-past-the-220th-column
+set ttyfast
+set mouse=a
+set ttymouse=sgr
+
+
+"Set syntax checking to passive (too slow otherwise)
+" Can still do :SyntasticCheck
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': []  }
+
+"Enable the stripping of whitespace at end of lines
+unlet! g:spf13_keep_trailing_whitespace
+
+"Use Space/Shift-Tab key to switch between tabs
+nmap <space> gt
+nmap <S-Tab> gT
+

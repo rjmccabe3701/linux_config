@@ -1,0 +1,33 @@
+[user]
+	name = McCabe, Robert J
+	email = Robert.McCabe@rockwellcollins.com
+[sendemail]
+    smtpserver = notessmtp.rockwellcollins.com
+    smtpserverport = 25
+[core]
+    pager = less
+[color]
+    diff = always
+    status = always
+    branch = always
+    interactive = always
+    ui = true
+    pager = true
+[alias]
+    dt = difftool --dir-diff
+    #Shows the commit corresponding to the merge of branch $1 into branch $1
+    aftermerge = "!f() { git rev-list --ancestry-path $1 --not $2 | tail -1; }; f"
+    justbranch = "!f() { git rev-list $1 --not ${2}^; }; f"
+    #pl = log --graph --format=oneline --abbrev-commit --decorate --all
+    pl = log --graph --format=oneline --abbrev-commit --decorate
+    dt = difftool --dir-diff
+[diff]
+	tool = bc3
+[difftool]
+	bc3 = trustExitCode
+[merge]
+	tool = bc3
+[mergetool]
+	bc3 = trustExitCode
+[http]
+	sslverify = false
