@@ -86,10 +86,6 @@ let g:airline_extensions = []
 "skittles_berry
 color inkpot
 
-"For some reason the select last visual selection key got overriden
-unmap gv
-
-
 "Block comment code in C/C++
 autocmd FileType cpp,c let b:surround_45 = "#if 0\n\r\n#endif\n"
 
