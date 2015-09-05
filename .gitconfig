@@ -6,6 +6,7 @@
     smtpserverport = 25
 [core]
     pager = less
+    excludesFile =
 [color]
     diff = always
     status = always

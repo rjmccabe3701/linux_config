@@ -12,6 +12,20 @@ set noswapfile
 
 "let g:NERDTreeDirArrows=0
 
+"Fix C++ indentation
+" g0 -- public and private now are not indented;
+" +0 -- *mostly* fixes the unwanted template indentation, it still
+"       gets messed up when inside a namespace and if the template
+"       args span more than 1 line ... grrrr.  It looks like this is
+"       a known issue:
+"       https://github.com/vim-scripts/google.vim/blob/master/indent/google.vim
+"
+" N-s -- don't intent inside namespaces
+set cino=g0,+0,N-s
+
+"Don't let the surround plugin re-format code
+" This is annoying when trying to block comment stuff
+let b:surround_indent=0
 
 "Dont create ~ files
 set nobackup
