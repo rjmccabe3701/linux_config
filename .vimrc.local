@@ -25,7 +25,7 @@ set cino=g0,+0,N-s
 
 "Don't let the surround plugin re-format code
 " This is annoying when trying to block comment stuff
-let b:surround_indent=0
+let g:surround_indent=0
 
 "Dont create ~ files
 set nobackup
