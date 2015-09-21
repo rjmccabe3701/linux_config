@@ -94,6 +94,7 @@ inoremap <S-Tab> <S-Tab>
 "let g:airline_extensions = ['branch', 'tabline']
 "The Status bar is too busy, this fixes that
 let g:airline_extensions = []
+let g:airline_theme = "wombat"
 
 
 "Good colors: kolor, contrasty, darth, inkpot, midnight, darkblack,

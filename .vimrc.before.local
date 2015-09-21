@@ -2,6 +2,7 @@
 "Don't switch directories when opening a file
 let g:spf13_no_autochdir = 1
 let g:spf13_no_views = 1
+let g:airline_powerline_fonts = 1
 
 "Override all bundles
 "let g:override_spf13_bundles = 1
