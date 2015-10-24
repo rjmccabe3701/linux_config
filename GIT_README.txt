@@ -23,3 +23,14 @@ To install just do:
 
 curl http://j.mp/spf13-vim3 -L -o - | sh
 
+----------- ZSH -----------------
+I am using the oh-my-zsh "distribution" for zsh.  See https://github.com/robbyrussell/oh-my-zsh
+To install just do:
+
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+To upgrade do
+
+upgrade_oh_my_zsh
+
+(it should also autoupdate every few weeks).
