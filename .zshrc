@@ -69,6 +69,9 @@ VM=192.168.75.128
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+#Disable TMUX windows from re-naming themselves
+DISABLE_AUTO_TITLE="true"
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
