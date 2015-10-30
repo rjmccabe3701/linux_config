@@ -7,7 +7,7 @@ curl http://j.mp/spf13-vim3 -L -o - | sh
 # sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 rm -rf ~/.oh-my-zsh
 rm -rf ~/.zshrc
-git clone --depth=1 git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 popd
 ln -sf ${DIR}/custom.zsh ~/.oh-my-zsh/lib/custom.zsh
