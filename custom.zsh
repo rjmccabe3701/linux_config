@@ -12,8 +12,8 @@ stty start undef
 stty -ixon
 
 # # alias tmux='tmux -2'
-# TDRS=192.168.141.210
-# VM=192.168.75.128
+TDRS=192.168.141.210
+VM=192.168.75.128
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
