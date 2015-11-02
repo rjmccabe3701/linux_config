@@ -5,7 +5,7 @@
     smtpserver = notessmtp.rockwellcollins.com
     smtpserverport = 25
 [core]
-    pager = more
+    pager = less -X
     excludesFile =
 [color]
     diff = always

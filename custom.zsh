@@ -20,4 +20,3 @@ VM=192.168.75.128
 #Disable TMUX windows from re-naming themselves
 DISABLE_AUTO_TITLE="true"
 
-setopt append_history no_inc_append_history no_share_history
