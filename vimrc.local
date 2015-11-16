@@ -99,7 +99,7 @@ let g:airline_theme = "wombat"
 
 "Good colors: kolor, contrasty, darth, inkpot, midnight, darkblack,
 "skittles_berry
-"color inkpot
+color inkpot
 
 "Block comment code in C/C++
 autocmd FileType cpp,c let b:surround_45 = "#if 0\n\r\n#endif\n"

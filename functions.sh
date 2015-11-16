@@ -1,8 +1,7 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-#files=(tmux.conf gitconfig vimrc.before.local vimrc.bundles.local vimrc.local)
-files=(tmux.conf gitconfig vimrc.before.local vimrc.local)
+files=(tmux.conf gitconfig vimrc.before.local vimrc.bundles.local vimrc.local)
 scripts=$(find ${DIR}/scripts -type f)
 
 function install_files()
