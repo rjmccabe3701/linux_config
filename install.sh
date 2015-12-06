@@ -13,6 +13,14 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 echo 'setopt no_share_history' >> ~/.zshrc
 popd
 ln -sf ${DIR}/custom.zsh ~/.oh-my-zsh/lib/custom.zsh
+
+if [ $(uname -o) = "Cygwin" ]
+then
+    #If running in cygwin the git prompt is very slow
+    # This should fix it.
+    echo -e '[oh-my-zsh]\n\thide-status = 1' >> ~/.gitconfig
+fi
+
 env zsh
 
 
