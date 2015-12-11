@@ -113,7 +113,7 @@ let NERDSpaceDelims = 1
 set diffopt=filler,vertical
 
 "Do not highlight the current line (its annoying)
-"set nocursorline
+set nocursorline
 
 "MUCH better mouse control of the terminal
 "  from http://usevim.com/2012/05/16/mouse/
@@ -126,7 +126,7 @@ set ttymouse=sgr
 
 "Set syntax checking to passive (too slow otherwise)
 " Can still do :SyntasticCheck
-"let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': []  }
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': []  }
 
 "Enable the stripping of whitespace at end of lines
 unlet! g:spf13_keep_trailing_whitespace
