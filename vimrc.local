@@ -52,7 +52,10 @@ fun! ShowFuncName()
   echohl None
   call search("\\%" . lnum . "l" . "\\%" . col . "c")
 endfun
-map W :call ShowFuncName() <CR>
+
+map <C-[> :call ShowFuncName() <CR>
+
+noremap \ ,
 
 " Allow Tab toggling between linux and Rockwell Standards
 function! TabToggle()
