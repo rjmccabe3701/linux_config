@@ -3,7 +3,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source ${DIR}/functions.sh
 install_files
 pushd ~
-# curl http://j.mp/spf13-vim3 -L -o - | sh
+curl http://j.mp/spf13-vim3 -L -o - | sh
 # sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 rm -rf ~/.oh-my-zsh
 rm -rf ~/.zshrc
