@@ -53,7 +53,7 @@ fun! ShowFuncName()
   call search("\\%" . lnum . "l" . "\\%" . col . "c")
 endfun
 
-map <C-[> :call ShowFuncName() <CR>
+map <F2> :call ShowFuncName() <CR>
 
 noremap \ ,
 

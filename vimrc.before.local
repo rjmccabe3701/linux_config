@@ -9,8 +9,8 @@ let g:airline_powerline_fonts = 1
 "let g:override_spf13_bundles = 1
 
 "Change this per the bundles we want
-"let g:spf13_bundle_groups=['general', 'writing', 'neocomplete', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc',]
 "let g:spf13_bundle_groups=['writing', 'neocomplete', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc',]
+let g:spf13_bundle_groups=['general', 'writing', 'neocomplete', 'programming', 'html', 'misc',]
 
 "Disable omnicomplete (its freaking annoying)
 "let g:spf13_no_omni_complete = 1
