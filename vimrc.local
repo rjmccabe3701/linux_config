@@ -77,7 +77,7 @@ let g:indent_guides_enable_on_vim_startup = 0
 source ~/scripts/cscope_maps.vim
 
 "Regenerate cscope database
-nmap <F11> :!find $(pwd) -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' > cscope.files<CR>
+nmap <F11> :!find $(pwd) -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.inl' > cscope.files<CR>
   \:!cscope -b -i cscope.files -f cscope.out<CR>
   \:cs reset<CR>
 
