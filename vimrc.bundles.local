@@ -1,3 +1,4 @@
 UnBundle 'AutoClose'
 UnBundle 'auto-pair'
 UnBundle 'jiangmiao/auto-pairs'
+UnBundle 'luochen1990/rainbow'
