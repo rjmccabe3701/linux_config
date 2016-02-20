@@ -124,7 +124,11 @@ set nocursorline
 "  http://stackoverflow.com/questions/7000960/in-vim-why-doesnt-my-mouse-work-past-the-220th-column
 set ttyfast
 set mouse=a
-set ttymouse=sgr
+"This is an error on OSX
+if !has('osx')
+    set ttymouse=sgr
+endif
+
 
 
 "Set syntax checking to passive (too slow otherwise)
