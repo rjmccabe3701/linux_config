@@ -28,10 +28,17 @@ case "$(uname -s)" in
 
    CYGWIN*|MINGW32*|MSYS*)
      echo 'MS Windows'
-    # This should fix it.
-    #If running in cygwin the git prompt is very slow
-    # This should fix it.
-    echo -e '[oh-my-zsh]\n\thide-status = 1' >> ~/.gitconfig
+    {
+        #If running in cygwin the git prompt is very slow
+        # This should fix it.
+        echo -e '[oh-my-zsh]\n\thide-status = 1'
+        #Add beyond compare as the default diff and merge tool
+        echo -en '[difftool "bc3"]\n\tcmd = \"c:/Program Files/Beyond Compare 3/BCompare.exe\"'
+        echo -e ' "$(cygpath -w $LOCAL)" "$(cygpath -w $REMOTE)"'
+        echo -en '[mergetool "bc3"]\n\tcmd = \"c:/Program Files/Beyond Compare 3/BCompare.exe\"'
+        echo -en  ' "$(cygpath -w $LOCAL)" "$(cygpath -w $REMOTE)"'
+        echo -e  ' "$(cygpath -w $BASE)" /mergeoutput="$(cygpath -w $MERGED)"'
+    } >> ~/.gitconfig
      ;;
 esac
 
