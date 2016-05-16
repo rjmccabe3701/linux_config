@@ -1,5 +1,5 @@
 ZSH_THEME="candy"
-plugins=(git colored-man-pages web-search tmux)
+plugins=(git colored-man-pages web-search tmux vi-mode)
 
 # # User configuration
 # #MY STUFF
