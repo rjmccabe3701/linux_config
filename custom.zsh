@@ -20,3 +20,6 @@ VM=192.168.75.128
 #Disable TMUX windows from re-naming themselves
 DISABLE_AUTO_TITLE="true"
 
+#Looks like Control-R (reverse search is disabled by default in vi-mode) ...
+bindkey -v
+bindkey '^R' history-incremental-search-backward
