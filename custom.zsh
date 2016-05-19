@@ -23,3 +23,5 @@ DISABLE_AUTO_TITLE="true"
 #Looks like Control-R (reverse search is disabled by default in vi-mode) ...
 bindkey -v
 bindkey '^R' history-incremental-search-backward
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
