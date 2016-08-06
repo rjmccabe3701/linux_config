@@ -31,3 +31,9 @@
 	bc3 = trustExitCode
 [http]
 	sslverify = false
+[oh-my-zsh]
+	hide-status = 1
+[difftool "bc3"]
+	cmd = \"c:/Program Files/Beyond Compare 3/BCompare.exe\" "$(cygpath -w $LOCAL)" "$(cygpath -w $REMOTE)"
+[mergetool "bc3"]
+	cmd = \"c:/Program Files/Beyond Compare 3/BCompare.exe\" "$(cygpath -w $LOCAL)" "$(cygpath -w $REMOTE)" "$(cygpath -w $BASE)" /mergeoutput="$(cygpath -w $MERGED)"

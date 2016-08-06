@@ -17,6 +17,7 @@ mkdir -p ~/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 #Install tmux plugings
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+ln -sf ${DIR}/tmux_fixups.sh ~/.tmux/tmux_fixups.sh
 
 #Don't share history between terminals
 echo 'setopt no_share_history' >> ~/.zshrc
