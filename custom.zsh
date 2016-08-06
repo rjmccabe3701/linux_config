@@ -3,7 +3,7 @@ plugins=(git colored-man-pages web-search tmux vi-mode)
 
 # # User configuration
 # #MY STUFF
-export PATH=$PATH:~/scripts
+export PATH=$PATH:~/scripts:~/bin
 # #From
 # #http://stackoverflow.com/questions/21806168/vim-use-ctrl-q-for-visual-block-mode-in-vim-gnome
 stty start undef
@@ -23,5 +23,7 @@ DISABLE_AUTO_TITLE="true"
 #Looks like Control-R (reverse search is disabled by default in vi-mode) ...
 bindkey -v
 bindkey '^R' history-incremental-search-backward
+bindkey '^F' history-incremental-search-forward
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
+

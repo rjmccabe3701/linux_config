@@ -6,4 +6,5 @@ source ${DIR}/functions.sh
 remove_files
 rm -rf ~/.spf13-vim-3/
 rm -rf ~/.vim*
+rm -rf ~/.tmux
 

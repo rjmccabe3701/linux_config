@@ -1,14 +1,23 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+./uninstall.sh
 source ${DIR}/functions.sh
 install_files
 pushd ~
+
+#SPF13 (vim)
 curl http://j.mp/spf13-vim3 -L -o - | sh
-# sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-rm -rf ~/.oh-my-zsh
-rm -rf ~/.zshrc
+
+#Oh-my-zsh
 git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+
+#TMUX plugin manager
+mkdir -p ~/.tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+#Install tmux plugings
+~/.tmux/plugins/tpm/scripts/install_plugins.sh
+
 #Don't share history between terminals
 echo 'setopt no_share_history' >> ~/.zshrc
 echo 'DISABLE_AUTO_UPDATE=true' >> ~/.zshrc
