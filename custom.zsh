@@ -3,7 +3,7 @@ plugins=(git colored-man-pages web-search tmux vi-mode)
 
 # # User configuration
 # #MY STUFF
-export PATH=$PATH:~/scripts:~/bin
+export PATH=~/scripts:~/bin:$PATH
 # #From
 # #http://stackoverflow.com/questions/21806168/vim-use-ctrl-q-for-visual-block-mode-in-vim-gnome
 stty start undef
