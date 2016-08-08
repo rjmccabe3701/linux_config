@@ -4,7 +4,7 @@ plugins=(git colored-man-pages web-search tmux vi-mode)
 # # User configuration
 # #MY STUFF
 export PATH=~/scripts:~/usr/bin:~/usr/sbin/$PATH
-export LD_LIBRARY_PATH=~/usr/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=~/usr/lib
 
 # #From
 # #http://stackoverflow.com/questions/21806168/vim-use-ctrl-q-for-visual-block-mode-in-vim-gnome
