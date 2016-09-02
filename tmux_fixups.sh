@@ -7,21 +7,41 @@ command_exists() {
 }
 
 #TODO: these really should be a part of the tmux-yank plugin
-
-#Allow pasting from system clipboard
-if command_exists "getclip"; then
-	#Right click and <prefix>+C-v will paste the system clipboard
-	tmux bind-key -T root MouseDown3Pane run 'tmux set-buffer "$(getclip)"; tmux paste-buffer'
-	tmux bind-key -T prefix C-v run 'tmux set-buffer "$(getclip)"; tmux paste-buffer'
-else
-	tmux bind-key -t vi-copy "p" "tmux display-message 'Error! getclip not installed'"
-fi
+clipboard_copy_command() {
+    if command_exists "pbcopy"; then
+        echo "pbcopy" #For MAC
+    elif command_exists "putclip"; then
+        echo "putclip" #For cygwin
+    else
+        echo ""
+    fi
+}
 
 #Copy from terminal using the mouse to select
-if command_exists "putclip"; then
-	#Middle click and <copy-mode>+p will paste the system clipboard
-	tmux bind-key -t vi-copy MouseDragEnd1Pane copy-pipe "putclip"
+COPY_CMD=$(clipboard_copy_command)
+if [ -z "$COPY_CMD" ]; then
+	tmux bind-key -t vi-copy "p" "tmux display-message 'Error! copy command not installed'"
 else
-	tmux bind-key -t vi-copy "p" "tmux display-message 'Error! putclip not installed'"
+	#Middle click and <copy-mode>+p will paste the system clipboard
+	tmux bind-key -t vi-copy MouseDragEnd1Pane copy-pipe "${COPY_CMD}"
+fi
+
+clipboard_paste_command() {
+    if command_exists "pbpaste"; then
+        echo "pbpaste" #For MAC
+    elif command_exists "getclip"; then
+        echo "getclip" #For cygwin
+    else
+        echo ""
+    fi
+}
+
+#Allow pasting from system clipboard
+PASTE_CMD=$(clipboard_paste_command)
+if [ -z "$PASTE_CMD" ]; then
+	tmux bind-key -t vi-copy "p" "tmux display-message 'Error! paste command not installed'"
+else
+	tmux bind-key -T root MouseDown3Pane run 'tmux set-buffer "${PASTE_CMD}"; tmux paste-buffer'
+	tmux bind-key -T prefix C-v run 'tmux set-buffer "${PASTE_CMD}"; tmux paste-buffer'
 fi
 
