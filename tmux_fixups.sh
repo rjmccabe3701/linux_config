@@ -26,22 +26,16 @@ else
 	tmux bind-key -t vi-copy MouseDragEnd1Pane copy-pipe "${COPY_CMD}"
 fi
 
-clipboard_paste_command() {
-    if command_exists "pbpaste"; then
-        echo "pbpaste" #For MAC
-    elif command_exists "getclip"; then
-        echo "getclip" #For cygwin
-    else
-        echo ""
-    fi
-}
-
 #Allow pasting from system clipboard
-PASTE_CMD=$(clipboard_paste_command)
-if [ -z "$PASTE_CMD" ]; then
-	tmux bind-key -t vi-copy "p" "tmux display-message 'Error! paste command not installed'"
+if command_exists "pbpaste"; then
+    #For MAC
+    tmux bind-key -T root MouseDown3Pane run 'tmux set-buffer "$(pbpaste)"; tmux paste-buffer'
+    tmux bind-key -T prefix C-v run 'tmux set-buffer "$(pbpaste)"; tmux paste-buffer'
+elif command_exists "getclip"; then
+    #For cygwin
+    tmux bind-key -T root MouseDown3Pane run 'tmux set-buffer "$(getclip)"; tmux paste-buffer'
+    tmux bind-key -T prefix C-v run 'tmux set-buffer "$(getclip)"; tmux paste-buffer'
 else
-	tmux bind-key -T root MouseDown3Pane run 'tmux set-buffer "${PASTE_CMD}"; tmux paste-buffer'
-	tmux bind-key -T prefix C-v run 'tmux set-buffer "${PASTE_CMD}"; tmux paste-buffer'
+    tmux bind-key -T prefix C-v run "tmux display-message 'Error! paste command not installed'"
 fi
 
