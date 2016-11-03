@@ -139,3 +139,6 @@ unlet! g:spf13_keep_trailing_whitespace
 nmap <space> gt
 nmap <S-Tab> gT
 
+
+"Stops vim from hiding quotes in json files
+set conceallevel=0
