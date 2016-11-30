@@ -1,5 +1,9 @@
 ZSH_THEME="candy"
 plugins=(git colored-man-pages web-search tmux vi-mode)
+#TODO: something is wrong with cygwin's prompt with zsh
+# -- it is crazy slow ... if i disable all plugins, it 
+# makes it a bit better.
+#plugins=()
 
 # # User configuration
 # #MY STUFF
