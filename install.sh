@@ -1,12 +1,19 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ./uninstall.sh
+mkdir -p ~/.vim/bundle
 source ${DIR}/functions.sh
 install_files
 pushd ~
 
-#SPF13 (vim)
-curl http://j.mp/spf13-vim3 -L -o - | sh
+#Install Vim plugins
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+#Install vundle plugins
+vim \
+    "+set nomore" \
+    "+BundleInstall!" \
+    "+BundleClean" \
+    "+qall"
 
 #Oh-my-zsh
 git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
