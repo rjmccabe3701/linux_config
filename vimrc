@@ -30,6 +30,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'shougo/neocomplete.vim'
 Plugin 'tpope/vim-markdown'
+Plugin 'chazy/cscope_maps'
 "Look into these:
 "Plugin 'xolox/vim-session'
 "Plugin 'terryma/vim-multiple-cursors'
@@ -56,17 +57,18 @@ scriptencoding utf-8
 set encoding=utf-8
 let mapleader = ','
 
-"Need to do this to make spf13 compatible with TMUX/SSH
-"set listchars=tab:>.,trail:.,extends:#,nbsp:.
-
-"If doing TMUX, it also needs to be instantiated with "tmux -2"
-"
-
-"TODO: set this spf13_keep_trailing_whitespace somewhere
+"Pretty tabbing thru files
+let g:airline#extensions#tabline#enabled = 1
 
 set nobackup
 set noswapfile
 
+"Easy opening of directories
+" From:
+" http://stackoverflow.com/questions/1708623/opening-files-in-the-same-folder-as-the-current-file-in-vim
+map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
+map ,t :tabe <C-R>=expand("%:p:h") . "/" <CR>
+map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
 
 "let g:NERDTreeDirArrows=0
 
@@ -134,7 +136,10 @@ nmap <F9> mz:execute TabToggle()<CR>'z
 "Disable the annoying tab colors
 let g:indent_guides_enable_on_vim_startup = 0
 
-source ~/scripts/cscope_maps.vim
+"Enable vim-airline status line (without having to split)
+set laststatus=2
+
+"source ~/scripts/cscope_maps.vim
 
 "Regenerate cscope database
 nmap <F11> :!find $(pwd) -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.inl' > cscope.files<CR>
@@ -154,7 +159,6 @@ inoremap <expr> <Esc>  pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
 "Now Shift-Tab inserts a tab
 inoremap <S-Tab> <S-Tab>
 
-"let g:airline_extensions = ['branch', 'tabline']
 "The Status bar is too busy, this fixes that
 let g:airline_extensions = []
 let g:airline_theme = "wombat"
@@ -162,24 +166,15 @@ let g:airline_theme = "wombat"
 
 syntax enable
 set background=dark
+let g:solarized_termcolors=256
 colorscheme solarized
-"Good colors: kolor, contrasty, darth, inkpot, midnight, darkblack,
-"skittles_berry
-"color inkpot
 
 "Block comment code in C/C++
 autocmd FileType cpp,c let b:surround_45 = "#if 0\n\r\n#endif\n"
 
-"The "H" and "L" keys (to go to the top and bottom) got remapped to change tabs --> put it back
-"unmap H
-"unmap L
-
 let NERDSpaceDelims = 1
 
 set diffopt=filler,vertical
-
-"Do not highlight the current line (its annoying)
-set nocursorline
 
 "MUCH better mouse control of the terminal
 "  from http://usevim.com/2012/05/16/mouse/
@@ -188,15 +183,6 @@ set nocursorline
 set ttyfast
 set mouse=a
 set ttymouse=sgr
-
-
-
-"Set syntax checking to passive (too slow otherwise)
-" Can still do :SyntasticCheck
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': []  }
-
-"Enable the stripping of whitespace at end of lines
-unlet! g:spf13_keep_trailing_whitespace
 
 "Use Space/Shift-Tab key to switch between tabs
 nmap <space> gt
@@ -246,3 +232,17 @@ set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic white
 set nowrap                      " Do not wrap long lines
 set autoindent                  " Indent at the same level of the previous line
 set tabstop=3                   " An indentation every three columns
+
+function! StripTrailingWhitespace()
+   " Preparation: save last search, and cursor position.
+   let _s=@/
+   let l = line(".")
+   let c = col(".")
+   " do the business:
+   %s/\s\+$//e
+   " clean up: restore previous search history, and cursor position
+   let @/=_s
+   call cursor(l, c)
+endfunction
+
+autocmd FileType c,cpp,java,python,bash,zsh autocmd BufWritePre <buffer> call StripTrailingWhitespace()

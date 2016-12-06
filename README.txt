@@ -6,9 +6,6 @@ git clone https://github.com/rjmccabe3701/linux_config.git
 
 linux_config/install.sh
 
------------ VIM -----------------
-I am using the spf13 "distribution" for VIM.  See http://vim.spf13.com/
-
 ----------- ZSH -----------------
 I am using the oh-my-zsh "distribution" for zsh.  See https://github.com/robbyrussell/oh-my-zsh
 To upgrade do
