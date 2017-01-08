@@ -56,6 +56,12 @@ case "$(uname -s)" in
         echo -en  ' "$(cygpath -w $LOCAL)" "$(cygpath -w $REMOTE)"'
         echo -e  ' "$(cygpath -w $BASE)" /mergeoutput="$(cygpath -w $MERGED)"'
     } >> ~/.gitconfig
+
+    #Cygwin can be slow with zsh depending on the plugin used ...
+    # cypher seems to work well.
+    #See
+    # https://github.com/robbyrussell/oh-my-zsh/issues/4179
+    sed -i 's/ZSH_THEME=.*/ZSH_THEME="cypher"/' ${DIR}/custom.zsh
      ;;
 esac
 

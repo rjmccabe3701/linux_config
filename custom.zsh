@@ -1,9 +1,5 @@
 ZSH_THEME="candy"
 plugins=(git colored-man-pages web-search tmux vi-mode)
-#TODO: something is wrong with cygwin's prompt with zsh
-# -- it is crazy slow ... if i disable all plugins, it 
-# makes it a bit better.
-#plugins=()
 
 # # User configuration
 # #MY STUFF
@@ -21,8 +17,6 @@ stty -ixon
 # # alias tmux='tmux -2'
 TDRS=192.168.141.210
 VM=192.168.75.128
-
-# export MANPATH="/usr/local/man:$MANPATH"
 
 #Disable TMUX windows from re-naming themselves
 DISABLE_AUTO_TITLE="true"
