@@ -66,8 +66,9 @@ case "$(uname -s)" in
     git config core.fscache true
 
     echo "To configure your cywgin adcount, add"
-    echo "db_home: /%H/cygwin_home"
+    echo "db_home: /home/<username>"
     echo "to your /etc/nsswitch.conf"
+    echo "Note that you may have git-related perf issues if you use a /cygdrive directory for home"
     echo "See "
     echo "http://stackoverflow.com/questions/1494658/how-can-i-change-my-cygwin-home-folder-after-installation"
     echo "for more information"
