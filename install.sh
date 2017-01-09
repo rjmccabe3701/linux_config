@@ -62,6 +62,16 @@ case "$(uname -s)" in
     #See
     # https://github.com/robbyrussell/oh-my-zsh/issues/4179
     sed -i 's/ZSH_THEME=.*/ZSH_THEME="cypher"/' ${DIR}/custom.zsh
+    #This speeds up git on windows a bit
+    git config core.fscache true
+
+    echo "To configure your cywgin adcount, add"
+    echo "db_home: /%H/cygwin_home"
+    echo "to your /etc/nsswitch.conf"
+    echo "See "
+    echo "http://stackoverflow.com/questions/1494658/how-can-i-change-my-cygwin-home-folder-after-installation"
+    echo "for more information"
+
      ;;
 esac
 
