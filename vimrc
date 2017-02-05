@@ -165,7 +165,6 @@ let g:airline_theme = "wombat"
 
 
 syntax enable
-set background=dark
 let g:solarized_termcolors=256
 colorscheme solarized
 
@@ -246,3 +245,4 @@ function! StripTrailingWhitespace()
 endfunction
 
 autocmd FileType c,cpp,java,python,bash,zsh autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+set background=dark
