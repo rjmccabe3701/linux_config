@@ -1,4 +1,5 @@
 ZSH_THEME="candy"
+# plugins=(git colored-man-pages web-search tmux vi-mode scd)
 plugins=(git colored-man-pages web-search tmux vi-mode)
 
 # # User configuration
@@ -6,6 +7,12 @@ plugins=(git colored-man-pages web-search tmux vi-mode)
 export PATH=~/scripts:~/usr/bin:~/usr/sbin/$PATH
 export LD_LIBRARY_PATH=~/usr/lib:${LD_LIBRARY_PATH}
 export MANPATH=~/usr/share/man:${MANPATH}
+
+#Smart change directory
+# alias s=scd
+if [ -e /usr/share/autojump/autojump.zsh ]; then
+   source  /usr/share/autojump/autojump.zsh
+fi
 
 # #From
 # #http://stackoverflow.com/questions/21806168/vim-use-ctrl-q-for-visual-block-mode-in-vim-gnome
@@ -15,8 +22,9 @@ stty start undef
 stty -ixon
 
 # # alias tmux='tmux -2'
-TDRS=192.168.141.210
+# TDRS=192.168.141.210
 VM=192.168.75.128
+MONSTER=192.168.98.71
 
 #Disable TMUX windows from re-naming themselves
 DISABLE_AUTO_TITLE="true"
