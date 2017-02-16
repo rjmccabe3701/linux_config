@@ -31,6 +31,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'shougo/neocomplete.vim'
 Plugin 'tpope/vim-markdown'
 Plugin 'chazy/cscope_maps'
+Plugin 'nvie/vim-flake8'
 "Look into these:
 "Plugin 'xolox/vim-session'
 "Plugin 'terryma/vim-multiple-cursors'
@@ -96,7 +97,6 @@ set noswapfile"
 autocmd FileType make setlocal noexpandtab
 autocmd FileType cpp setlocal expandtab shiftwidth=3 softtabstop=3
 autocmd FileType c setlocal noexpandtab shiftwidth=3 softtabstop=3
-
 
 
 "Control-C copies visual selection
