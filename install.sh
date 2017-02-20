@@ -9,7 +9,7 @@ pushd ~
 #Install Vim plugins
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #Install vundle plugins
-vim \
+yes | vim \
     "+set nomore" \
     "+BundleInstall!" \
     "+BundleClean" \
