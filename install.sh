@@ -37,6 +37,7 @@ case "$(uname -s)" in
 
    Darwin)
      echo 'Detected MAC'
+     echo 'export EDITOR=/usr/local/bin/vim' >> ~/.zshrc
      ;;
 
    Linux)
