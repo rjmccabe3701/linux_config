@@ -55,6 +55,10 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 """"""""""""""""""""""""
 
+" https://github.com/kien/ctrlp.vim/blob/master/doc/ctrlp.txt
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 40
+
 scriptencoding utf-8
 set encoding=utf-8
 let mapleader = ','

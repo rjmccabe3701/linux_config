@@ -32,3 +32,5 @@
 	bc3 = trustExitCode
 [http]
 	sslverify = false
+[rerere]
+	enabled = true
