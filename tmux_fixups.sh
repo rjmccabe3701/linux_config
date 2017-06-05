@@ -20,10 +20,10 @@ clipboard_copy_command() {
 #Copy from terminal using the mouse to select
 COPY_CMD=$(clipboard_copy_command)
 if [ -z "$COPY_CMD" ]; then
-	tmux bind-key -t vi-copy "p" "tmux display-message 'Error! copy command not installed'"
+	tmux bind-key -T copy-mode-vi "p" "tmux display-message 'Error! copy command not installed'"
 else
-	#Middle click and <copy-mode>+p will paste the system clipboard
-	tmux bind-key -t vi-copy MouseDragEnd1Pane copy-pipe "${COPY_CMD}"
+	Middle click and <copy-mode>+p will paste the system clipboard
+	tmux bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "${COPY_CMD}"
 fi
 
 #Allow pasting from system clipboard

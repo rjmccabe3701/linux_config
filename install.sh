@@ -66,6 +66,11 @@ case "$(uname -s)" in
     #This speeds up git on windows a bit
     git config core.fscache true
 
+    #See https://github.com/tmux-plugins/tmux-yank/issues/91#issuecomment-306174136
+    sed -i '/clip.exe/ d' ~/.tmux/plugins/tmux-yank/scripts/helpers.sh
+
+
+
     echo "To configure your cywgin adcount, add"
     echo "db_home: /home/<username>"
     echo "to your /etc/nsswitch.conf"
