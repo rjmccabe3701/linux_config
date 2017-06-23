@@ -99,9 +99,8 @@ set nobackup
 ""Dont create swap files
 set noswapfile"
 
+autocmd FileType * setlocal expandtab shiftwidth=3 softtabstop=3
 autocmd FileType make setlocal noexpandtab
-autocmd FileType cpp setlocal expandtab shiftwidth=3 softtabstop=3
-autocmd FileType c setlocal noexpandtab shiftwidth=3 softtabstop=3
 
 
 "Control-C copies visual selection
@@ -249,5 +248,5 @@ function! StripTrailingWhitespace()
    call cursor(l, c)
 endfunction
 
-autocmd FileType c,cpp,java,python,bash,zsh autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+autocmd FileType * autocmd BufWritePre <buffer> call StripTrailingWhitespace()
 set background=dark
