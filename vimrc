@@ -33,6 +33,7 @@ Plugin 'shougo/neocomplete.vim'
 Plugin 'tpope/vim-markdown'
 Plugin 'chazy/cscope_maps'
 Plugin 'nvie/vim-flake8'
+Plugin 'jlanzarotta/bufexplorer'
 "Look into these:
 "Plugin 'xolox/vim-session'
 "Plugin 'terryma/vim-multiple-cursors'
@@ -58,6 +59,7 @@ filetype plugin indent on    " required
 " https://github.com/kien/ctrlp.vim/blob/master/doc/ctrlp.txt
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 40
+set wildignore+=.git\*,.hg\*,.svn\*,*.d,*.dbo,*.o,*.ti,*.a,*.so
 
 scriptencoding utf-8
 set encoding=utf-8
@@ -184,12 +186,23 @@ set diffopt=filler,vertical
 "  and
 "  http://stackoverflow.com/questions/7000960/in-vim-why-doesnt-my-mouse-work-past-the-220th-column
 set ttyfast
-set mouse=a
+set mouse=a                 " Automatically enable mouse usage
 set ttymouse=sgr
 
 "Use Space/Shift-Tab key to switch between tabs
 nmap <space> gt
 nmap <S-Tab> gT
+
+"Split windows and move around between them
+nmap ,v <C-w>v<C-w>l
+nmap ,s <C-w>s<C-w>j
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-l> <C-w>l
+nmap <C-k> <C-w>k
+
+"Shortcut to open NERDTree
+nmap <Leader>ne :NERDTreeToggle<CR>
 
 "from http://vimawesome.com/plugin/easymotion
 " <Leader>f{char} to move to {char}
@@ -209,7 +222,6 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 set conceallevel=0
 
 let g:airline_powerline_fonts = 1
-set mouse=a                 " Automatically enable mouse usage
 set history=1000                    " Store a ton of history (default is 20)
 set spell                           " Spell checking on
 set hidden                          " Allow buffer switching without saving
