@@ -21,11 +21,6 @@ stty start undef
 # #http://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal
 stty -ixon
 
-# # alias tmux='tmux -2'
-# TDRS=192.168.141.210
-VM=192.168.75.128
-MONSTER=192.168.98.71
-
 #Disable TMUX windows from re-naming themselves
 DISABLE_AUTO_TITLE="true"
 
