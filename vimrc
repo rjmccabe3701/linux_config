@@ -10,8 +10,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
-
 Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-surround'
@@ -19,10 +17,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'powerline/fonts'
-"Look into this: Plugin 'xolox/vim-session'
 Plugin 'sudo.vim'
-"TODO: might be vim-airline/vim-airline
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'mhinz/vim-signify'
@@ -33,12 +29,19 @@ Plugin 'shougo/neocomplete.vim'
 Plugin 'tpope/vim-markdown'
 Plugin 'chazy/cscope_maps'
 Plugin 'nvie/vim-flake8'
-Plugin 'jlanzarotta/bufexplorer'
+Plugin 'vim-scripts/a.vim'
 "Look into these:
 "Plugin 'xolox/vim-session'
 "Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'jistr/vim-nerdtree-tabs'
 "Plugin 'tpope/vim-abolish'
+
+" Allow the user to specify any custom Vundle plugins here
+try
+   source ~/.myvimrc_vundle_plugins
+catch
+   " No such file? No problem; just ignore it
+endtry
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -68,9 +71,6 @@ let mapleader = ','
 "Pretty tabbing thru files
 let g:airline#extensions#tabline#enabled = 1
 
-set nobackup
-set noswapfile
-
 "Easy opening of directories
 " From:
 " http://stackoverflow.com/questions/1708623/opening-files-in-the-same-folder-as-the-current-file-in-vim
@@ -97,19 +97,9 @@ let g:surround_indent=0
 
 "Dont create ~ files
 set nobackup
-"
-""Dont create swap files
-set noswapfile"
 
-autocmd FileType * setlocal expandtab shiftwidth=3 softtabstop=3
-autocmd FileType make setlocal noexpandtab
-
-
-"Control-C copies visual selection
-vmap <C-C> "+y
-"Control-V pastes in control and insert mode
-map <C-V>               "+gP
-imap <C-V>  <ESC>"+gpa
+"Dont create swap files
+set noswapfile
 
 "from http://vim.wikia.com/wiki/Show_current_function_name_in_C_programs
 fun! ShowFuncName()
@@ -124,6 +114,9 @@ endfun
 map <F2> :call ShowFuncName() <CR>
 
 noremap \ ,
+
+autocmd FileType * setlocal expandtab shiftwidth=3 softtabstop=3
+autocmd FileType make setlocal noexpandtab
 
 " Allow Tab toggling between linux and Rockwell Standards
 function! TabToggle()
@@ -145,14 +138,6 @@ let g:indent_guides_enable_on_vim_startup = 0
 "Enable vim-airline status line (without having to split)
 set laststatus=2
 
-"source ~/scripts/cscope_maps.vim
-
-"Regenerate cscope database
-nmap <F11> :!find $(pwd) -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.inl' > cscope.files<CR>
-  \:!cscope -b -i cscope.files -f cscope.out<CR>
-  \:cs reset<CR>
-
-
 "Disables auto completions ( you can still use TAB to autocomplete )
 "let g:neocomplcache_disable_auto_complete = 1
 ":call NeoCompleteLock()
@@ -162,13 +147,9 @@ let g:neocomplete#disable_auto_complete = 1
 "Escape no longer undoes the selection we just made ...
 inoremap <expr> <Esc>  pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
 
-"Now Shift-Tab inserts a tab
-inoremap <S-Tab> <S-Tab>
-
 "The Status bar is too busy, this fixes that
 let g:airline_extensions = []
 let g:airline_theme = "wombat"
-
 
 syntax enable
 let g:solarized_termcolors=256
@@ -193,7 +174,7 @@ set ttymouse=sgr
 nmap <space> gt
 nmap <S-Tab> gT
 
-"Split windows and move around between them
+"Shortcut to split windows and move around between them
 nmap ,v <C-w>v<C-w>l
 nmap ,s <C-w>s<C-w>j
 nmap <C-h> <C-w>h
@@ -246,6 +227,7 @@ set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic white
 
 set nowrap                      " Do not wrap long lines
 set autoindent                  " Indent at the same level of the previous line
+set smartindent                 " Use code indenting style for auto indent
 set tabstop=3                   " An indentation every three columns
 
 function! StripTrailingWhitespace()
@@ -262,3 +244,21 @@ endfunction
 
 autocmd FileType * autocmd BufWritePre <buffer> call StripTrailingWhitespace()
 set background=dark
+
+nmap <F11> :!find $(pwd) -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.inl' > cscope.files<CR>
+  \:!cscope -b -i cscope.files -f cscope.out<CR>
+  \:cs reset<CR>
+
+"Source the vimrc file after saving it
+if has("autocmd")
+   autocmd bufwritepost .vimrc source $MYVIMRC
+   autocmd bufwritepost .myvimrc source $MYVIMRC
+   autocmd bufwritepost .myvimrc_vundle_plugins source $MYVIMRC
+endif
+
+" Run any custom user vimrc setup last
+try
+   source ~/.myvimrc
+catch
+   " No such file? No problem; just ignore it
+endtry
