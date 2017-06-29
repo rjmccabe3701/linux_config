@@ -19,12 +19,6 @@
     justbranch = "!f() { git rev-list $1 --not ${2}^; }; f"
     #pl = log --graph --format=oneline --abbrev-commit --decorate --all
     pl = log --graph --format=oneline --abbrev-commit --decorate
-[diff]
-	tool = kdiff3
-[difftool]
-    prompt = false
-[merge]
-	tool = kdiff3
 [http]
 	sslverify = false
 [rerere]
