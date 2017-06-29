@@ -31,3 +31,6 @@ bindkey '^F' history-incremental-search-forward
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
 
+if [[ -e ~/.myzshrc ]]; then
+   . ~/.myzshrc
+fi
