@@ -1,0 +1,2 @@
+set spell!                          " Spell checking off
+set hidden!                         " DisAllow buffer switching without saving

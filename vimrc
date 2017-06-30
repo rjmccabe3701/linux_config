@@ -10,8 +10,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
-
 Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-surround'
@@ -19,10 +17,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'powerline/fonts'
-"Look into this: Plugin 'xolox/vim-session'
 Plugin 'sudo.vim'
-"TODO: might be vim-airline/vim-airline
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'mhinz/vim-signify'
@@ -33,11 +29,19 @@ Plugin 'shougo/neocomplete.vim'
 Plugin 'tpope/vim-markdown'
 Plugin 'chazy/cscope_maps'
 Plugin 'nvie/vim-flake8'
+Plugin 'vim-scripts/a.vim'
 "Look into these:
 "Plugin 'xolox/vim-session'
 "Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'jistr/vim-nerdtree-tabs'
 "Plugin 'tpope/vim-abolish'
+
+" Allow the user to specify any custom Vundle plugins here
+try
+   source ~/.myvimrc_vundle_plugins
+catch
+   " No such file? No problem; just ignore it
+endtry
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -58,6 +62,7 @@ filetype plugin indent on    " required
 " https://github.com/kien/ctrlp.vim/blob/master/doc/ctrlp.txt
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 40
+set wildignore+=.git\*,.hg\*,.svn\*,*.d,*.dbo,*.o,*.ti,*.a,*.so
 
 scriptencoding utf-8
 set encoding=utf-8
@@ -65,9 +70,6 @@ let mapleader = ','
 
 "Pretty tabbing thru files
 let g:airline#extensions#tabline#enabled = 1
-
-set nobackup
-set noswapfile
 
 "Easy opening of directories
 " From:
@@ -95,19 +97,9 @@ let g:surround_indent=0
 
 "Dont create ~ files
 set nobackup
-"
-""Dont create swap files
-set noswapfile"
 
-autocmd FileType * setlocal expandtab shiftwidth=3 softtabstop=3
-autocmd FileType make setlocal noexpandtab
-
-
-"Control-C copies visual selection
-vmap <C-C> "+y
-"Control-V pastes in control and insert mode
-map <C-V>               "+gP
-imap <C-V>  <ESC>"+gpa
+"Dont create swap files
+set noswapfile
 
 "from http://vim.wikia.com/wiki/Show_current_function_name_in_C_programs
 fun! ShowFuncName()
@@ -123,7 +115,10 @@ map <F2> :call ShowFuncName() <CR>
 
 noremap \ ,
 
-" Allow Tab toggling between linux and Rockwell Standards
+autocmd FileType * setlocal expandtab shiftwidth=3 softtabstop=3
+autocmd FileType make setlocal noexpandtab
+
+" Allow Tab toggling between linux and typical c++ Standards
 function! TabToggle()
   if &expandtab
     set shiftwidth=4
@@ -143,14 +138,6 @@ let g:indent_guides_enable_on_vim_startup = 0
 "Enable vim-airline status line (without having to split)
 set laststatus=2
 
-"source ~/scripts/cscope_maps.vim
-
-"Regenerate cscope database
-nmap <F11> :!find $(pwd) -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.inl' > cscope.files<CR>
-  \:!cscope -b -i cscope.files -f cscope.out<CR>
-  \:cs reset<CR>
-
-
 "Disables auto completions ( you can still use TAB to autocomplete )
 "let g:neocomplcache_disable_auto_complete = 1
 ":call NeoCompleteLock()
@@ -160,13 +147,9 @@ let g:neocomplete#disable_auto_complete = 1
 "Escape no longer undoes the selection we just made ...
 inoremap <expr> <Esc>  pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
 
-"Now Shift-Tab inserts a tab
-inoremap <S-Tab> <S-Tab>
-
 "The Status bar is too busy, this fixes that
 let g:airline_extensions = []
 let g:airline_theme = "wombat"
-
 
 syntax enable
 let g:solarized_termcolors=256
@@ -184,12 +167,23 @@ set diffopt=filler,vertical
 "  and
 "  http://stackoverflow.com/questions/7000960/in-vim-why-doesnt-my-mouse-work-past-the-220th-column
 set ttyfast
-set mouse=a
+set mouse=a                 " Automatically enable mouse usage
 set ttymouse=sgr
 
 "Use Space/Shift-Tab key to switch between tabs
 nmap <space> gt
 nmap <S-Tab> gT
+
+"Shortcut to split windows and move around between them
+nmap ,v <C-w>v<C-w>l
+nmap ,s <C-w>s<C-w>j
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-l> <C-w>l
+nmap <C-k> <C-w>k
+
+"Shortcut to open NERDTree
+nmap <Leader>ne :NERDTreeToggle<CR>
 
 "from http://vimawesome.com/plugin/easymotion
 " <Leader>f{char} to move to {char}
@@ -209,7 +203,6 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 set conceallevel=0
 
 let g:airline_powerline_fonts = 1
-set mouse=a                 " Automatically enable mouse usage
 set history=1000                    " Store a ton of history (default is 20)
 set spell                           " Spell checking on
 set hidden                          " Allow buffer switching without saving
@@ -234,6 +227,7 @@ set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic white
 
 set nowrap                      " Do not wrap long lines
 set autoindent                  " Indent at the same level of the previous line
+set smartindent                 " Use code indenting style for auto indent
 set tabstop=3                   " An indentation every three columns
 
 function! StripTrailingWhitespace()
@@ -250,3 +244,21 @@ endfunction
 
 autocmd FileType * autocmd BufWritePre <buffer> call StripTrailingWhitespace()
 set background=dark
+
+nmap <F11> :!find $(pwd) -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -iname '*.h' -o -iname '*.hpp' -o -iname '*.inl' > cscope.files<CR>
+  \:!cscope -b -i cscope.files -f cscope.out<CR>
+  \:cs reset<CR>
+
+"Source the vimrc file after saving it
+if has("autocmd")
+   autocmd bufwritepost .vimrc source $MYVIMRC
+   autocmd bufwritepost .myvimrc source $MYVIMRC
+   autocmd bufwritepost .myvimrc_vundle_plugins source $MYVIMRC
+endif
+
+" Run any custom user vimrc setup last
+try
+   source ~/.myvimrc
+catch
+   " No such file? No problem; just ignore it
+endtry

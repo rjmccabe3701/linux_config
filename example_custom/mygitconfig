@@ -1,0 +1,9 @@
+[user]
+   name = John Smith
+   email = jsmith@gmail.com
+[diff]
+   tool = kdiff3
+[difftool]
+   prompt = false
+[merge]
+   tool = kdiff3

@@ -17,3 +17,6 @@ upgrade_oh_my_zsh
 ----------------------------------
 To uninstall do
 linux_config/uninstall.sh
+
+Please not that user specific customization is allowed.  Please refer to
+CUSTOM_CONFIG.txt for details (and an example) of how to set that up.
