@@ -1,0 +1,6 @@
+set -o vi
+
+alias vm=mv
+alias sl=ls
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/lib

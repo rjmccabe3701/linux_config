@@ -118,7 +118,7 @@ noremap \ ,
 autocmd FileType * setlocal expandtab shiftwidth=3 softtabstop=3
 autocmd FileType make setlocal noexpandtab
 
-" Allow Tab toggling between linux and Rockwell Standards
+" Allow Tab toggling between linux and typical c++ Standards
 function! TabToggle()
   if &expandtab
     set shiftwidth=4
