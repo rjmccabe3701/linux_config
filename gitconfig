@@ -1,27 +1,24 @@
-[sendemail]
-    smtpserver = smtpimr.rockwellcollins.com
-    smtpserverport = 25
 [core]
-    pager = less -X
-    excludesFile =
-    editor = vim
+   pager = less -X
+   excludesFile =
+   editor = vim
 [color]
-    diff = always
-    status = always
-    branch = always
-    interactive = always
-    ui = true
-    pager = true
+   diff = always
+   status = always
+   branch = always
+   interactive = always
+   ui = true
+   pager = true
 [alias]
-    dt = difftool --dir-diff
+   dt = difftool --dir-diff
     #Shows the commit corresponding to the merge of branch $1 into branch $1
-    aftermerge = "!f() { git rev-list --ancestry-path $1 --not $2 | tail -1; }; f"
-    justbranch = "!f() { git rev-list $1 --not ${2}^; }; f"
+   aftermerge = "!f() { git rev-list --ancestry-path $1 --not $2 | tail -1; }; f"
+   justbranch = "!f() { git rev-list $1 --not ${2}^; }; f"
     #pl = log --graph --format=oneline --abbrev-commit --decorate --all
-    pl = log --graph --format=oneline --abbrev-commit --decorate
+   pl = log --graph --format=oneline --abbrev-commit --decorate
 [http]
-	sslverify = false
+   sslverify = false
 [rerere]
-	enabled = true
+   enabled = true
 [include]
    path = ~/.mygitconfig
