@@ -113,6 +113,8 @@ endfun
 
 map <F2> :call ShowFuncName() <CR>
 
+set pastetoggle=<F5>
+
 noremap \ ,
 
 autocmd FileType * setlocal expandtab shiftwidth=3 softtabstop=3
