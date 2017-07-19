@@ -123,7 +123,7 @@ autocmd FileType make setlocal noexpandtab
 " Allow Tab toggling between linux and typical c++ Standards
 function! TabToggle()
   if &expandtab
-    set shiftwidth=4
+    set shiftwidth=3
     set softtabstop=0
     set noexpandtab
   else
