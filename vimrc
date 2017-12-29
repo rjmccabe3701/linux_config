@@ -166,11 +166,13 @@ set diffopt=filler,vertical
 
 "MUCH better mouse control of the terminal
 "  from http://usevim.com/2012/05/16/mouse/
-"  and
-"  http://stackoverflow.com/questions/7000960/in-vim-why-doesnt-my-mouse-work-past-the-220th-column
 set ttyfast
 set mouse=a                 " Automatically enable mouse usage
-set ttymouse=sgr
+
+if !has('nvim')
+"  http://stackoverflow.com/questions/7000960/in-vim-why-doesnt-my-mouse-work-past-the-220th-column
+   set ttymouse=sgr
+endif
 
 "Use Space/Shift-Tab key to switch between tabs
 nmap <space> gt

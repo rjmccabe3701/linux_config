@@ -15,6 +15,15 @@ yes | vim \
     "+BundleClean" \
     "+qall"
 
+#Neovim configuration:
+# http://vimcasts.org/episodes/meet-neovim/
+mkdir -p ~/.config/nvim
+cat <<EOF > ~/.config/nvim/init.vim
+set runtimepath+=~/.vim,~/.vim/after
+set packpath+=~/.vim
+source ~/.vimrc
+EOF
+
 #Oh-my-zsh
 git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
