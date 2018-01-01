@@ -1,6 +1,6 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-./uninstall.sh
+${DIR}/uninstall.sh
 mkdir -p ~/.vim/bundle
 source ${DIR}/functions.sh
 install_files
