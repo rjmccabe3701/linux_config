@@ -20,3 +20,17 @@ linux_config/uninstall.sh
 
 Please not that user specific customization is allowed.  Please refer to
 CUSTOM_CONFIG.txt for details (and an example) of how to set that up.
+
+-----------------------------
+If using cygwin you probably want to install these packages:
+
+   zsh
+   vim
+   tmux
+   git
+   xinit
+   xclip
+   xclipboard
+   cygutils-extra
+
+
