@@ -59,12 +59,6 @@ case "$(uname -s)" in
         #If running in cygwin the git prompt is very slow
         # This should fix it.
         echo -e '[oh-my-zsh]\n\thide-status = 1'
-        #Add beyond compare as the default diff and merge tool
-        echo -en '[difftool "bc3"]\n\tcmd = \"c:/Program Files/Beyond Compare 3/BCompare.exe\"'
-        echo -e ' "$(cygpath -w $LOCAL)" "$(cygpath -w $REMOTE)"'
-        echo -en '[mergetool "bc3"]\n\tcmd = \"c:/Program Files/Beyond Compare 3/BCompare.exe\"'
-        echo -en  ' "$(cygpath -w $LOCAL)" "$(cygpath -w $REMOTE)"'
-        echo -e  ' "$(cygpath -w $BASE)" /mergeoutput="$(cygpath -w $MERGED)"'
     } >> ~/.gitconfig
 
     #Cygwin can be slow with zsh depending on the plugin used ...
@@ -74,11 +68,6 @@ case "$(uname -s)" in
     sed -i 's/ZSH_THEME=.*/ZSH_THEME="cypher"/' ${DIR}/custom.zsh
     #This speeds up git on windows a bit
     git config core.fscache true
-
-    #See https://github.com/tmux-plugins/tmux-yank/issues/91#issuecomment-306174136
-    sed -i '/clip.exe/ d' ~/.tmux/plugins/tmux-yank/scripts/helpers.sh
-
-
 
     echo "To configure your cywgin adcount, add"
     echo "db_home: /home/<username>"
