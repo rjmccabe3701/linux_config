@@ -119,6 +119,9 @@ noremap \ ,
 
 autocmd FileType * setlocal expandtab shiftwidth=3 softtabstop=3
 autocmd FileType make setlocal noexpandtab
+"See
+"  https://stackoverflow.com/questions/2360249/vim-automatically-removes-indentation-on-python-comments
+autocmd FileType python setlocal nosmartindent
 
 " Allow Tab toggling between linux and typical c++ Standards
 function! TabToggle()
