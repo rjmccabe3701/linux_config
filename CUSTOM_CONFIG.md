@@ -33,7 +33,7 @@ To add your own tmux settings, add these to the file ``~/.tmux.conf``.  Refer
 to this [example](example_custom/mytmux.conf).
 
 
-# Zshrc Customizations
+## Zshrc Customizations
 
 To add your own zshrc settings (such as aliases), add these to the
 file ``~/.myzshrc``.  Refer to this [example](example_custom/myzshrc).
