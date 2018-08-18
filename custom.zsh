@@ -12,8 +12,12 @@ export MANPATH=~/usr/share/man:${MANPATH}
 # alias s=scd
 if [ -e /usr/share/autojump/autojump.zsh ]; then
    source  /usr/share/autojump/autojump.zsh
+elif [ -e /home/$USER/.autojump/share/autojump/autojump.zsh  ]; then
+   #This is where the install for
+   # https://github.com/wting/autojump
+   #will put it
+   source /home/$USER/.autojump/share/autojump/autojump.zsh
 fi
-
 # #From
 # #http://stackoverflow.com/questions/21806168/vim-use-ctrl-q-for-visual-block-mode-in-vim-gnome
 stty start undef
