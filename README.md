@@ -1,7 +1,7 @@
 # LINUX CONFIGURATION FOR IMPROVED SHELL EXPERIENCE
 
 This repository is a set of scripts/utilities to improve
-you productivity at a *nix*-like terminal.
+your productivity at a *nix*-like terminal.
 
 In particular it provides several ease-of-use wrappers around
 (and plugins for) the following tools:
@@ -22,7 +22,7 @@ Not yet supported:
 
 # Installing
 
-# Prerequisites
+## Prerequisites
 
 The required prerequisite packages are
 
@@ -35,7 +35,7 @@ The required prerequisite packages are
 
 Optionally you can install
 
-* [autojump](https://github.com/wting/autojump) for a fuzzy-finder to MRU directory usage.
+* [autojump](https://github.com/wting/autojump) for a fuzzy MRU directory finder.
 * [neovim](https://neovim.io/) as it has better plugin support (in particular copy/paste clipboard interaction) than native vim.
 
 If you would like copy/paste integration with the system clipboard you will need
@@ -62,7 +62,7 @@ If you would like copy/paste integration with the system clipboard you will need
 ```
 
 
-# Install
+## Install
 
 Simply clone the repository and install
 
@@ -71,7 +71,7 @@ git clone https://github.com/rjmccabe3701/linux_config.git
 linux_config/install.sh
 ```
 
-# Uninstall
+# Uninstalling
 
 Run the uninstall script:
 
