@@ -15,10 +15,7 @@ In particular it provides several ease-of-use wrappers around
 * Linux (all relatively recent distributions)
 * Cygwin
 * MacOS-X (use iTerm2)
-
-Not yet supported:
-
-* WSL (coming soon!)
+* WSL
 
 # Installing
 
@@ -60,6 +57,10 @@ If you would like copy/paste integration with the system clipboard you will need
 ```
    pbcopy/pbpaste
 ```
+
+**WSL**
+
+Need to copy [paste.exe](https://www.c3scripts.com/tutorials/msdos/paste.zip) to ``C:\Windows\System32\paste.exe``.
 
 
 ## Install

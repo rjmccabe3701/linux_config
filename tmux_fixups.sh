@@ -8,40 +8,49 @@ command_exists() {
 
 #TODO: these really should be a part of the tmux-yank plugin
 clipboard_copy_command() {
-    if command_exists "xsel"; then
-        echo "xsel -i --clipboard" # For Linux
-    elif command_exists "putclip"; then
-        echo "putclip" #For cygwin
-    else
-        echo "pbcopy" #For MAC
-    fi
+   if [ -f /mnt/c/Windows/System32/clip.exe ]; then
+      #WSL
+      echo "/mnt/c/Windows/System32/clip.exe"
+   elif command_exists "xsel"; then
+       echo "xsel -i --clipboard" # For Linux
+   elif command_exists "putclip"; then
+       echo "putclip" #For cygwin
+   else
+       echo "pbcopy" #For MAC
+   fi
 }
+
+clipboard_paste_command() {
+   if [ -f /mnt/c/Windows/System32/paste.exe ]; then
+      #WSL
+      echo "/mnt/c/Windows/System32/paste.exe | sed 's/\r//'"
+   elif command_exists "xsel"; then
+       echo "xsel" #linux
+   elif command_exists "putclip"; then
+       echo "getclip" #For cygwin
+   else
+       echo "pbpaste" #For MAC
+   fi
+}
+
 
 #Copy from terminal using the mouse to select
 COPY_CMD=$(clipboard_copy_command)
 if [ -z "$COPY_CMD" ]; then
    tmux bind-key -T copy-mode-vi "p" "tmux display-message 'Error! copy command not installed'"
 else
-   #End mouse drag and <Alt-y> will copy to system clipboard
-   tmux bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "${COPY_CMD}"
-   # tmux bind-key -T copy-mode-vi M-y send-keys -X copy-pipe-and-cancel "${COPY_CMD}"
-   tmux bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "${COPY_CMD}"
+   #Use "y" to yank selection
+   tmux bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "tmux save-buffer - | ${COPY_CMD}"
+   #End mouse drag copies also
+   tmux bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "tmux save-buffer - | ${COPY_CMD}"
 fi
 
 #Allow pasting from system clipboard
-if command_exists "xsel"; then
-    #For Linux
-    tmux bind-key -T root MouseDown3Pane run 'tmux set-buffer "$(xsel)"; tmux paste-buffer'
-    tmux bind-key -T prefix ] run 'tmux set-buffer "$(xsel)"; tmux paste-buffer'
-elif command_exists "getclip"; then
-    #For cygwin
-    tmux bind-key -T root MouseDown3Pane run 'tmux set-buffer "$(getclip)"; tmux paste-buffer'
-    tmux bind-key -T prefix ] run 'tmux set-buffer "$(getclip)"; tmux paste-buffer'
-elif command_exists "pbpaste"; then
-    #For MAC
-    tmux bind-key -T root MouseDown3Pane run 'tmux set-buffer "$(pbpaste)"; tmux paste-buffer'
-    tmux bind-key -T prefix ] run 'tmux set-buffer "$(pbpaste)"; tmux paste-buffer'
+PASTE_CMD=$(clipboard_paste_command)
+if [ -z "$PASTE_CMD" ]; then
+   tmux bind-key -T prefix ] run "tmux display-message 'Error! paste command not installed'"
 else
-    tmux bind-key -T prefix ] run "tmux display-message 'Error! paste command not installed'"
+   tmux bind-key -T root MouseDown3Pane run "tmux set-buffer \"\$(${PASTE_CMD})\" && tmux paste-buffer"
+   tmux bind-key -T prefix ] run "tmux set-buffer \"\$(${PASTE_CMD})\" && tmux paste-buffer"
 fi
 
