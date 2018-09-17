@@ -85,4 +85,12 @@ linux_config/uninstall.sh
 User-specific customization is allowed.  Please refer to
 [CUSTOM_CONFIG](CUSTOM_CONFIG.md) for details (and examples) of how to set that up.
 
+# Xserver setup
 
+(this is only applicable for ssh-ing into a machine with ``linux_config`` installed).
+I've had good luck with the cygwin xserver (while Xming works, the clipboard integration is flaky).
+Just do this in a cygwin terminal:
+
+```bash
+/usr/bin/XWin -listen tcp -multiwindow
+```
