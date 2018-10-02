@@ -41,7 +41,7 @@ echo 'DISABLE_AUTO_UPDATE=true' >> ~/.zshrc
 popd
 ln -sf ${DIR}/custom.zsh ~/.oh-my-zsh/lib/custom.zsh
 
-
+IS_WINDOWS=0
 case "$(uname -s)" in
 
    Darwin)
@@ -50,7 +50,12 @@ case "$(uname -s)" in
      ;;
 
    Linux)
-     echo 'Detected Linux'
+     if echo "$(uname -a)" | grep -q Microsoft; then
+        echo 'Detected WSL'
+        IS_WINDOWS=1
+     else
+        echo 'Detected Linux'
+     fi
      ;;
 
    CYGWIN*|MINGW32*|MSYS*)
@@ -79,6 +84,23 @@ case "$(uname -s)" in
 
      ;;
 esac
+
+if [ $IS_WINDOWS -eq 1 ]; then
+   echo "applying windows-specific fixups"
+   {
+      #If running in Windows (WSL or cygwin) the git prompt is very slow
+      # This should fix it.
+      echo -e '[oh-my-zsh]\n\thide-status = 1'
+   } >> ~/.gitconfig
+
+   #Windows can be slow with zsh depending on the plugin used ...
+   # cypher seems to work well.
+   #See
+   # https://github.com/robbyrussell/oh-my-zsh/issues/4179
+   sed -i 's/ZSH_THEME=.*/ZSH_THEME="cypher"/' ${DIR}/custom.zsh
+   #This speeds up git on windows a bit
+   git config core.fscache true
+fi
 
 env zsh
 
