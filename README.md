@@ -87,8 +87,11 @@ User-specific customization is allowed.  Please refer to
 
 # Xserver setup
 
-(this is only applicable for ssh-ing into a machine with ``linux_config`` installed).
-I've had good luck with the cygwin xserver (while Xming works, the clipboard integration is flaky).
+*(this is only applicable for ssh-ing into a machine with ``linux_config`` installed).*
+
+[Vcsrv](https://sourceforge.net/projects/vcxsrv) seems to work quite well.
+
+I've also had good luck with the cygwin xserver (while Xming works, the clipboard integration is flaky).
 Just do this in a cygwin terminal:
 
 ```bash
