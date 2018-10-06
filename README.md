@@ -89,7 +89,7 @@ User-specific customization is allowed.  Please refer to
 
 *(this is only applicable for ssh-ing into a machine with ``linux_config`` installed).*
 
-[Vcsrv](https://sourceforge.net/projects/vcxsrv) seems to work quite well.
+[VcXsrv](https://sourceforge.net/projects/vcxsrv) seems to work quite well.
 
 I've also had good luck with the cygwin xserver (while Xming works, the clipboard integration is flaky).
 Just do this in a cygwin terminal:
