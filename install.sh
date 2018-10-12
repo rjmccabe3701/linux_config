@@ -86,6 +86,7 @@ case "$(uname -s)" in
 esac
 
 if [ $IS_WINDOWS -eq 1 ]; then
+   git checkout ${DIR}/gitconfig
    echo "applying windows-specific fixups"
    {
       #If running in Windows (WSL or cygwin) the git prompt is very slow
@@ -93,11 +94,16 @@ if [ $IS_WINDOWS -eq 1 ]; then
       echo -e '[oh-my-zsh]\n\thide-status = 1'
    } >> ~/.gitconfig
 
+   git checkout ${DIR}/custom.zsh
    #Windows can be slow with zsh depending on the plugin used ...
    # cypher seems to work well.
    #See
    # https://github.com/robbyrussell/oh-my-zsh/issues/4179
    sed -i 's/ZSH_THEME=.*/ZSH_THEME="cypher"/' ${DIR}/custom.zsh
+
+   #This gets rid of the annoying "nice(5) failed ..." errors in zsh:
+   #https://evalcode.com/zsh-default-wsl-windows-10/
+   echo "unsetopt BG_NICE" >> ${DIR}/custom.zsh
    #This speeds up git on windows a bit
    git config core.fscache true
 fi
