@@ -97,3 +97,13 @@ Just do this in a cygwin terminal:
 ```bash
 /usr/bin/XWin -listen tcp -multiwindow
 ```
+
+## Re-attaching to tmux session
+
+You will need to update your ``DISPLAY`` env variable.  To do this inside vim do
+
+```
+let $DISPLAY = 'localhost:11.0'
+```
+
+where ``localhost:11.0`` is determined by opening a new terminal and typing ``echo $DISPLAY``
