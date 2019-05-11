@@ -11,12 +11,14 @@ clipboard_copy_command() {
    if [ -f /mnt/c/Windows/System32/clip.exe ]; then
       #WSL
       echo "/mnt/c/Windows/System32/clip.exe"
+   elif command_exists "xclip"; then
+      echo "xclip -i" # For Linux
    elif command_exists "xsel"; then
-       echo "xsel -i --clipboard" # For Linux
+      echo "xsel -i --clipboard" # For Linux (fallback -- its slower)
    elif command_exists "putclip"; then
-       echo "putclip" #For cygwin
+      echo "putclip" #For cygwin
    else
-       echo "pbcopy" #For MAC
+      echo "pbcopy" #For MAC
    fi
 }
 
@@ -24,8 +26,10 @@ clipboard_paste_command() {
    if [ -f /mnt/c/Windows/System32/paste.exe ]; then
       #WSL
       echo "/mnt/c/Windows/System32/paste.exe | sed 's/\r//'"
+   elif command_exists "xclip"; then
+       echo "xclip -o" #linux
    elif command_exists "xsel"; then
-       echo "xsel" #linux
+      echo "xsel" #linux (fallback -- its slower)
    elif command_exists "putclip"; then
        echo "getclip" #For cygwin
    else
