@@ -40,6 +40,8 @@ If you would like copy/paste integration with the system clipboard you will need
 **Linux**
 
 ```
+   xclip
+   #OR (xclip seems faster)
    xsel
 ```
 
