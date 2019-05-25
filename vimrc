@@ -118,24 +118,28 @@ set pastetoggle=<F5>
 noremap \ ,
 
 autocmd FileType * setlocal expandtab shiftwidth=3 softtabstop=3
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType make setlocal noexpandtab
 "See
 "  https://stackoverflow.com/questions/2360249/vim-automatically-removes-indentation-on-python-comments
 autocmd FileType python setlocal nosmartindent
 
-" Allow Tab toggling between linux and typical c++ Standards
-function! TabToggle()
-  if &expandtab
-    set shiftwidth=3
-    set softtabstop=0
-    set noexpandtab
-  else
-    set shiftwidth=3
-    set softtabstop=3
-    set expandtab
-  endif
-endfunction
-nmap <F9> mz:execute TabToggle()<CR>'z
+if &filetype != "python"
+   " Allow Tab toggling between linux and typical c++ Standards
+   function! TabToggle()
+     if &expandtab
+       set shiftwidth=3
+       set softtabstop=0
+       set noexpandtab
+     else
+       set shiftwidth=3
+       set softtabstop=3
+       set expandtab
+     endif
+   endfunction
+   nmap <F9> mz:execute TabToggle()<CR>
+endif
+
 
 "Disable the annoying tab colors
 let g:indent_guides_enable_on_vim_startup = 0
