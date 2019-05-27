@@ -1,6 +1,7 @@
 ZSH_THEME="candy"
 # plugins=(git colored-man-pages web-search tmux vi-mode scd)
-plugins=(git colored-man-pages web-search tmux vi-mode)
+plugins=(git colored-man-pages web-search tmux vi-mode \
+   copybuffer copyfile copydir)
 
 # # User configuration
 # #MY STUFF
