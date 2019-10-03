@@ -87,7 +87,9 @@ linux_config/uninstall.sh
 # Customizing
 
 User-specific customization is allowed.  Please refer to
-[CUSTOM_CONFIG](CUSTOM_CONFIG.md) for details (and examples) of how to set that up.
+[CUSTOM_CONFIG](CUSTOM_CONFIG.md) for details (and examples) of how to set that up.  See my
+**[linux_config_custom](https://github.com/rjmccabe3701/linux_config_custom)** repository for
+a real-world example.
 
 # Xserver setup
 
