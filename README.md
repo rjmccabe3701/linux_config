@@ -14,7 +14,9 @@ In particular it provides several ease-of-use wrappers around
 
 * Linux (all relatively recent distributions)
 * Cygwin
-* MacOS-X (use iTerm2)
+* MacOS-X (use iTerm2). *You may want to remap the ``Fn`` and ``Ctrl`` keys if you are like me and are annoyed
+  how Apple insists on being different.  [Karabiner-Elements](https://github.com/tekezo/Karabiner-Elements)
+  seems to work well.*
 * WSL
 
 # Installing
