@@ -1,19 +1,25 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+if [ $# -eq 1 ]; then
+   if [ ! -d $1 ]; then
+      echo "Could not find plugin directory $1" >&2
+      exit 1
+   fi
+   export LINUX_CONFIG_PLUGIN_DIR="$(cd $1 && pwd)"
+else
+   unset LINUX_CONFIG_PLUGIN_DIR
+fi
+
+cd ${DIR}
+
 ${DIR}/uninstall.sh
-mkdir -p ~/.vim/bundle
 source ${DIR}/functions.sh
 install_files
-pushd ~
 
 #Install Vim plugins
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-#Install vundle plugins
-yes | vim \
-    "+set nomore" \
-    "+BundleInstall!" \
-    "+BundleClean" \
-    "+qall"
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 #Neovim configuration:
 # http://vimcasts.org/episodes/meet-neovim/
@@ -23,6 +29,12 @@ set runtimepath+=~/.vim,~/.vim/after
 set packpath+=~/.vim
 source ~/.vimrc
 EOF
+
+#Install neovim plugins
+nvim \
+    "+PlugInstall" \
+    "+PlugClean" \
+    "+qall"
 
 #Oh-my-zsh
 git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
@@ -38,7 +50,6 @@ ln -sf ${DIR}/tmux_fixups.sh ~/.tmux/tmux_fixups.sh
 #Don't share history between terminals
 echo 'setopt no_share_history' >> ~/.zshrc
 echo 'DISABLE_AUTO_UPDATE=true' >> ~/.zshrc
-popd
 ln -sf ${DIR}/custom.zsh ~/.oh-my-zsh/lib/custom.zsh
 
 IS_WINDOWS=0
@@ -108,7 +119,8 @@ if [ $IS_WINDOWS -eq 1 ]; then
    git config core.fscache true
 fi
 
+if [ -f ${LINUX_CONFIG_PLUGIN_DIR}/custom_install.sh ]
+then
+   ${LINUX_CONFIG_PLUGIN_DIR}/custom_install.sh
+fi
 env zsh
-
-
-

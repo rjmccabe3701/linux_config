@@ -3,12 +3,6 @@ ZSH_THEME="candy"
 plugins=(git colored-man-pages web-search tmux vi-mode \
    copybuffer copyfile copydir)
 
-# # User configuration
-# #MY STUFF
-export PATH=~/scripts:~/usr/bin:~/usr/sbin/:$PATH
-export LD_LIBRARY_PATH=~/usr/lib:${LD_LIBRARY_PATH}
-export MANPATH=~/usr/share/man:${MANPATH}
-
 #Smart change directory
 # alias s=scd
 if [ -e /usr/share/autojump/autojump.zsh ]; then

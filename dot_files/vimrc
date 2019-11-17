@@ -2,60 +2,43 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'powerline/fonts'
-Plugin 'sudo.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'mhinz/vim-signify'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'godlygeek/tabular'
-Plugin 'shougo/neocomplete.vim'
-Plugin 'tpope/vim-markdown'
-Plugin 'chazy/cscope_maps'
-Plugin 'nvie/vim-flake8'
-Plugin 'vim-scripts/a.vim'
+call plug#begin('~/.vim/plugged')
+Plug 'VundleVim/Vundle.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'powerline/fonts'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'easymotion/vim-easymotion'
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdcommenter'
+Plug 'godlygeek/tabular'
+Plug 'shougo/neocomplete.vim'
+Plug 'tpope/vim-markdown'
+Plug 'chazy/cscope_maps'
+Plug 'nvie/vim-flake8'
+Plug 'vim-scripts/a.vim'
 "Look into these:
-"Plugin 'xolox/vim-session'
-"Plugin 'terryma/vim-multiple-cursors'
-"Plugin 'jistr/vim-nerdtree-tabs'
-"Plugin 'tpope/vim-abolish'
+"Plug 'xolox/vim-session'
+"Plug 'terryma/vim-multiple-cursors'
+"Plug 'jistr/vim-nerdtree-tabs'
+"Plug 'tpope/vim-abolish'
 
-" Allow the user to specify any custom Vundle plugins here
+" Allow the user to specify any custom plugins here
 try
-   source ~/.myvimrc_vundle_plugins
+   source ~/.myvimrc_plugins
 catch
    " No such file? No problem; just ignore it
 endtry
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
+call plug#end()            " required
 "
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 """"""""""""""""""""""""
 

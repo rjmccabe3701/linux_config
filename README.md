@@ -27,7 +27,7 @@ The required prerequisite packages are
 
 ```
    zsh
-   vim
+   neovim
    tmux
    git
 ```
@@ -35,7 +35,6 @@ The required prerequisite packages are
 Optionally you can install
 
 * [autojump](https://github.com/wting/autojump) for a fuzzy MRU directory finder.
-* [neovim](https://neovim.io/) as it has better plugin support (in particular copy/paste clipboard interaction) than native vim.
 
 If you would like copy/paste integration with the system clipboard you will need
 
@@ -73,7 +72,7 @@ Simply clone the repository and install
 
 ```bash
 git clone https://github.com/rjmccabe3701/linux_config.git
-linux_config/install.sh
+linux_config/install.sh [/path/to/custom_config]
 ```
 
 # Uninstalling

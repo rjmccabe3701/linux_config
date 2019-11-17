@@ -1,8 +1,19 @@
 #!/bin/bash
+set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-files=(gitconfig vimrc)
+# dot_files=(gitconfig vimrc)
+dot_files=$(find ${DIR}/dot_files -type f)
 scripts=$(find ${DIR}/scripts -type f)
+
+if [ ! -z ${LINUX_CONFIG_PLUGIN_DIR} ]; then
+   if [ -d ${LINUX_CONFIG_PLUGIN_DIR}/dot_files ]; then
+      dot_files+=($(find ${LINUX_CONFIG_PLUGIN_DIR}/dot_files -type f))
+   fi
+   if [ -d ${LINUX_CONFIG_PLUGIN_DIR}/scripts ]; then
+      scripts+=($(find ${LINUX_CONFIG_PLUGIN_DIR}/scripts -type f))
+   fi
+fi
 
 function install_files()
 {
@@ -12,9 +23,9 @@ function install_files()
    else
       ln -sf ${DIR}/tmux_pre2_9.conf ~/.tmux.conf
    fi
-   for f in ${files[@]}
+   for f in ${dot_files[@]}
    do
-      ln -sf ${DIR}/${f} ~/.${f}
+      ln -sf ${f} ~/.$(basename ${f})
    done
 
    mkdir -p ~/scripts
@@ -26,9 +37,9 @@ function install_files()
 
 function remove_files()
 {
-   for f in ${files[@]}
+   for f in ${dot_files[@]}
    do
-      rm -f ~/.${f}
+      rm -f ~/.$(basename ${f})
    done
 
    for f in ${scripts[@]}

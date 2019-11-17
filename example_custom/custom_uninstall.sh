@@ -1,0 +1,1 @@
+echo "CUSTOM UNINSTALL"
