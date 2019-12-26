@@ -97,7 +97,7 @@ case "$(uname -s)" in
 esac
 
 if [ $IS_WINDOWS -eq 1 ]; then
-   git checkout ${DIR}/gitconfig
+   git checkout ${DIR}/dot_files/gitconfig
    echo "applying windows-specific fixups"
    {
       #If running in Windows (WSL or cygwin) the git prompt is very slow
