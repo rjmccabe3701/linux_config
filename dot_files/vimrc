@@ -72,7 +72,11 @@ map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
 "       https://github.com/vim-scripts/google.vim/blob/master/indent/google.vim
 "
 " N-s -- don't intent inside namespaces
-set cino=g0,+0,N-s
+" the
+"    j1,(0,ws,Ws
+" seems to fix lambda indentation:
+"    https://www.systutorials.com/241820/how-to-make-vim-indent-c11-lambdas-correctly/
+set cino=g0,+0,N-s,j1,(0,ws,Ws
 
 "Don't let the surround plugin re-format code
 " This is annoying when trying to block comment stuff
