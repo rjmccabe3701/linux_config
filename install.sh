@@ -30,11 +30,18 @@ set packpath+=~/.vim
 source ~/.vimrc
 EOF
 
+#Force https git submodules.  See this:
+# https://github.com/ycm-core/ycmd/issues/1421
+git config --global url."https://".insteadOf git://
+
 #Install neovim plugins
 nvim \
     "+PlugInstall" \
     "+PlugClean" \
     "+qall"
+
+#Put gitconfig back to what it was
+git checkout dot_files/gitconfig
 
 #Oh-my-zsh
 git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
