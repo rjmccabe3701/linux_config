@@ -103,6 +103,7 @@ noremap \ ,
 
 autocmd FileType * setlocal expandtab shiftwidth=3 softtabstop=3
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType make setlocal noexpandtab
 "See
 "  https://stackoverflow.com/questions/2360249/vim-automatically-removes-indentation-on-python-comments
