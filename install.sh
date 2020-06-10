@@ -52,6 +52,7 @@ mkdir -p ~/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 #Install tmux plugings
 ln -sf ${DIR}/tmux_fixups.sh ~/.tmux/tmux_fixups.sh
+ln -sf ${DIR}/scripts/update_display.sh ~/.tmux/update_display.sh
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 #Don't share history between terminals
