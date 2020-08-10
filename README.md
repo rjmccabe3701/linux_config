@@ -30,6 +30,7 @@ The required prerequisite packages are
    neovim
    tmux
    git
+   bc
 ```
 
 Optionally you can install
