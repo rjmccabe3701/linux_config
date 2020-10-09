@@ -271,6 +271,9 @@ nmap <F11> :!find $(pwd) -iname '*.c' -o -iname '*.cpp' -o -iname '*.cc' -o -ina
   \:!cscope -b -i cscope.files -f cscope.out<CR>
   \:cs reset<CR>
 
+" Force cscope to use the normal quickfix menu (otherwise the colors are hard to read)
+set cscopequickfix=s-,c-,d-,i-,t-,e-,a-
+
 "Source the vimrc file after saving it
 if has("autocmd")
    autocmd bufwritepost .vimrc source $MYVIMRC
