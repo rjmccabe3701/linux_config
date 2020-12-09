@@ -1,7 +1,7 @@
 ZSH_THEME="candy"
 # plugins=(git colored-man-pages web-search tmux vi-mode scd)
 plugins=(git colored-man-pages web-search tmux vi-mode \
-   copybuffer copyfile copydir)
+   copybuffer copyfile copydir kubectl)
 
 #Smart change directory
 # alias s=scd
