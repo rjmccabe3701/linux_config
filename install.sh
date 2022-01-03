@@ -23,12 +23,12 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 #Neovim configuration:
 # http://vimcasts.org/episodes/meet-neovim/
-mkdir -p ~/.config/nvim
-cat <<EOF > ~/.config/nvim/init.vim
-set runtimepath+=~/.vim,~/.vim/after
-set packpath+=~/.vim
-source ~/.vimrc
-EOF
+# mkdir -p ~/.config/nvim
+# cat <<EOF > ~/.config/nvim/init.vim
+# set runtimepath+=~/.vim,~/.vim/after
+# set packpath+=~/.vim
+# source ~/.vimrc
+# EOF
 
 #Force https git submodules.  See this:
 # https://github.com/ycm-core/ycmd/issues/1421

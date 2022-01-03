@@ -102,6 +102,7 @@ set pastetoggle=<F5>
 noremap \ ,
 
 autocmd FileType * setlocal expandtab shiftwidth=3 softtabstop=3
+autocmd FileType cpp setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType json setlocal expandtab shiftwidth=2 softtabstop=2
