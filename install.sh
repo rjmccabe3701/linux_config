@@ -48,12 +48,14 @@ git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
 #TMUX plugin manager
-mkdir -p ~/.tmux/plugins
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-#Install tmux plugings
-ln -sf ${DIR}/tmux_fixups.sh ~/.tmux/tmux_fixups.sh
-ln -sf ${DIR}/scripts/update_display.sh ~/.tmux/update_display.sh
-~/.tmux/plugins/tpm/scripts/install_plugins.sh
+if command -v tmux > /dev/null; then
+   mkdir -p ~/.tmux/plugins
+   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+   #Install tmux plugings
+   ln -sf ${DIR}/tmux_fixups.sh ~/.tmux/tmux_fixups.sh
+   ln -sf ${DIR}/scripts/update_display.sh ~/.tmux/update_display.sh
+   ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+fi
 
 #Don't share history between terminals
 echo 'setopt no_share_history' >> ~/.zshrc

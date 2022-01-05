@@ -17,7 +17,7 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'
 Plug 'godlygeek/tabular'
-Plug 'shougo/neocomplete.vim'
+"Plug 'shougo/neocomplete.vim'
 Plug 'tpope/vim-markdown'
 Plug 'chazy/cscope_maps'
 "Look into these:
