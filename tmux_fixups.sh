@@ -12,7 +12,7 @@ clipboard_copy_command() {
       #WSL
       echo "/mnt/c/Windows/System32/clip.exe"
    elif command_exists "xclip"; then
-      echo "xclip -i" # For Linux
+      echo "xclip -i -selection clipboard" # For Linux
    elif command_exists "xsel"; then
       echo "xsel -i --clipboard" # For Linux (fallback -- its slower)
    elif command_exists "putclip"; then
@@ -27,7 +27,7 @@ clipboard_paste_command() {
       #WSL
       echo "/mnt/c/Windows/System32/paste.exe | sed 's/\r//'"
    elif command_exists "xclip"; then
-       echo "xclip -o" #linux
+       echo "xclip -o -selection clipboard" #linux
    elif command_exists "xsel"; then
       echo "xsel" #linux (fallback -- its slower)
    elif command_exists "putclip"; then
