@@ -1,7 +1,7 @@
 [core]
    pager = less -X
    excludesFile =
-   editor = vim
+   editor = nvim
 [color]
    diff = always
    status = always
