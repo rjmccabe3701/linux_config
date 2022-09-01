@@ -7,7 +7,6 @@ In particular it provides several ease-of-use wrappers around
 (and plugins for) the following tools:
 
 * **TMUX**
-* **VIM**
 * **ZSH**: I am using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
 # Supported platforms
@@ -27,7 +26,6 @@ The required prerequisite packages are
 
 ```
    zsh
-   neovim
    tmux
    git
    bc
@@ -104,12 +102,3 @@ Just do this in a cygwin terminal:
 /usr/bin/XWin -listen tcp -multiwindow
 ```
 
-## Re-attaching to tmux session
-
-You will need to update your ``DISPLAY`` env variable.  To do this inside vim do
-
-```
-let $DISPLAY = 'localhost:11.0'
-```
-
-where ``localhost:11.0`` is determined by opening a new terminal and typing ``echo $DISPLAY``

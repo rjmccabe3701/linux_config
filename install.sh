@@ -17,32 +17,6 @@ ${DIR}/uninstall.sh
 source ${DIR}/functions.sh
 install_files
 
-#Install Vim plugins
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-#Neovim configuration:
-# http://vimcasts.org/episodes/meet-neovim/
-# mkdir -p ~/.config/nvim
-# cat <<EOF > ~/.config/nvim/init.vim
-# set runtimepath+=~/.vim,~/.vim/after
-# set packpath+=~/.vim
-# source ~/.vimrc
-# EOF
-
-#Force https git submodules.  See this:
-# https://github.com/ycm-core/ycmd/issues/1421
-git config --global url."https://".insteadOf git://
-
-#Install neovim plugins
-nvim \
-    "+PlugInstall" \
-    "+PlugClean" \
-    "+qall"
-
-#Put gitconfig back to what it was
-git checkout dot_files/gitconfig
-
 #Oh-my-zsh
 git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
@@ -67,7 +41,6 @@ case "$(uname -s)" in
 
    Darwin)
      echo 'Detected MAC'
-     echo 'export EDITOR=/usr/local/bin/nvim' >> ~/.zshrc
      ;;
 
    Linux)
