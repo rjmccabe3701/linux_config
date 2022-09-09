@@ -14,6 +14,9 @@ elif [ -e /home/$USER/.autojump/share/autojump/autojump.zsh  ]; then
    # https://github.com/wting/autojump
    #will put it
    source /home/$USER/.autojump/share/autojump/autojump.zsh
+elif [ -f /opt/homebrew/etc/profile.d/autojump.sh ]; then
+   #For MAC/homebrew
+   source /opt/homebrew/etc/profile.d/autojump.sh
 fi
 # #From
 # #http://stackoverflow.com/questions/21806168/vim-use-ctrl-q-for-visual-block-mode-in-vim-gnome
