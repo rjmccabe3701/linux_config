@@ -28,7 +28,6 @@ if command -v tmux > /dev/null; then
    #Install tmux plugings
    ln -sf ${DIR}/tmux_fixups.sh ~/.tmux/tmux_fixups.sh
    ln -sf ${DIR}/scripts/update_display.sh ~/.tmux/update_display.sh
-   ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 fi
 
 #Don't share history between terminals
@@ -105,5 +104,8 @@ fi
 if [ -f ${LINUX_CONFIG_PLUGIN_DIR}/custom_install.sh ]
 then
    ${LINUX_CONFIG_PLUGIN_DIR}/custom_install.sh
+fi
+if command -v tmux > /dev/null; then
+   ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 fi
 env zsh
